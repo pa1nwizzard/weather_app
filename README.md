@@ -1,3 +1,3 @@
 # weather_app
 
-A new Flutter project.
+This project only for interview :D
