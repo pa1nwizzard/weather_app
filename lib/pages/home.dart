@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
                       ),
                       Container(
                         width: 1000,
-                        height: 1.5,
+                        height: 2,
                         color: Colors.white,
                       )
                     ],
@@ -151,7 +151,7 @@ class _HomeState extends State<Home> {
                       ),
                       Container(
                         width: 1000,
-                        height: 1.5,
+                        height: 2,
                         color: Colors.white,
                       )
                     ],
@@ -164,8 +164,9 @@ class _HomeState extends State<Home> {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: EdgeInsetsGeometry.all(8),
+                      padding: EdgeInsetsGeometry.only(top: 8, bottom: 8, right: 16, left: 16),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             index == 0 ? 'Today' : '${dt.weekday + index <= 7 ? weekdays[dt.weekday + index] : weekdays[dt.weekday + index - 7]}',
@@ -173,7 +174,47 @@ class _HomeState extends State<Home> {
                               fontSize: 20,
                               textStyle: TextStyle(color: Colors.white)
                             ),
-                          )
+                          ),
+                          Row(
+                            spacing: 10,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 27,
+                                child: Center(
+                                  child: Text(
+                                    weather.degreesCelsius.isEmpty ? '' : '${sortedWeather[index][0].round()}°',
+                                    style: GoogleFonts.josefinSans(
+                                      fontSize: 20,
+                                      textStyle: TextStyle(color: Color.fromARGB(255, 0, 127, 173))
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 50,
+                                child: Center(
+                                  child: Container(
+                                    width: 43,
+                                    height: 1,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 27,
+                                child: Center(
+                                  child: Text(
+                                    weather.degreesCelsius.isEmpty ? '' : '${sortedWeather[index][23].round()}°',
+                                    style: GoogleFonts.josefinSans(
+                                      fontSize: 20,
+                                      textStyle: TextStyle(color: Color.fromARGB(255, 0, 127, 173))
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     );
